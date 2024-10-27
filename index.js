@@ -41,4 +41,4 @@ console.log(trampoline(flatArray, inputArr));
 // console.log(trampoline(flatArray, inputArr2));
 
 
-console.log();
+//PART 3 IS ON THE HTML     
