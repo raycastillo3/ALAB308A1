@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output"></div>
+
+    <script>
+      const output = document.getElementById("output");
+
+      const deferredExecution = (n) => {
+        const primes = [];
+
+        for (let i = 1; i <= n; i++) {
+          if (isPrime(i)) {
+            primes.push(i);
+          }
+        }
+        output.innerHTML = `${primes.join(",")}`;
+        setTimeout(() => {
+          alert("the calculation is finished");
+        }, 500);
+      };
+
+      const isPrime = (num) => {
+        for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
+          if (num % i === 0) return false;
+        }
+        return num > 1;
+      };
+
+      //   deferredExecution(10000);
+
+      const deferredExecution2 = (n, curr = 1) => {
+        if (curr > n) {
+            setTimeout(() => alert("The calculation is finished!"), 1000);
+            return;
+        }
+        if (isPrime(curr)) {
+            setTimeout(()=>{
+                output.innerHTML += curr + ",";
+            }, curr * 100)
+        }
+        deferredExecution2(n, curr + 1);
+      }
+      deferredExecution2(1000); // I lowered to 1000 because 10000 was taking very long
+    </script>
+  </body>
+</html>
